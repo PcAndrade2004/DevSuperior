@@ -12,7 +12,8 @@ target/
 .settings
 .springBeans
 .sts4-cache
-
+# Arquivos de metadados do Windows que devem ser ignorados
+*Zone.Identifier
 ### IntelliJ IDEA ###
 .idea
 *.iws
