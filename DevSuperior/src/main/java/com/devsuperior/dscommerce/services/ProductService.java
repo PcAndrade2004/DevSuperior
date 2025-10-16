@@ -4,7 +4,11 @@ import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.entities.Product;
 import com.devsuperior.dscommerce.repository.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -16,5 +20,11 @@ public class ProductService {
     public ProductDTO findById(Long id) {
         Product product = repository.findById(id).get();// pegando o produto que está dentro do result
         return new ProductDTO(product);
+    }
+
+
+    public Page<ProductDTO> findAll(Pageable pegeable) {
+        Page<Product> result = repository.findAll(pegeable);
+        return result.map(ProductDTO::new);
     }
 }
