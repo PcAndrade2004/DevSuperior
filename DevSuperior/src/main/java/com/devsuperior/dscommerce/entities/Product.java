@@ -15,7 +15,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    
+
     @Column(columnDefinition = "TEXT")
     private String description;
     private Double price;
@@ -32,7 +32,6 @@ public class Product {
 
     public Product() {
     }
-
 
     public Product(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;
