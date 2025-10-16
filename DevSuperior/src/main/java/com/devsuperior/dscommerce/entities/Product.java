@@ -33,7 +33,6 @@ public class Product {
     public Product() {
     }
 
-    //ola
 
     public Product(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;
