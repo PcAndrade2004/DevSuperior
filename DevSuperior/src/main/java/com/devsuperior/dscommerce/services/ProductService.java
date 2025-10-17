@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class ProductService {
@@ -29,6 +31,11 @@ public class ProductService {
 
     @Transactional
     public ProductDTO insert(ProductDTO dto) {
+
+        Optional<Product> existingProduct = repository.findByName(dto.getName());
+        if (existingProduct.isPresent()) {
+            throw new IllegalArgumentException("Já existe um produto com este nome: " + dto.getName());
+        }
         Product entity = new Product();
         copyDtoToEntity(dto,entity);
         entity = repository.save(entity);
